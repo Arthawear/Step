@@ -24,10 +24,8 @@ namespace Step.Views
     /// </summary>
     public partial class Tab : UserControl
     {
-        Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-        Microsoft.Office.Interop.Excel._Workbook wb;
-        Microsoft.Office.Interop.Excel._Worksheet ws;
-       
+        Microsoft.Office.Interop.Excel.Application app;
+
         public Tab()
         {
             InitializeComponent();
@@ -35,12 +33,17 @@ namespace Step.Views
 
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
+            app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook wb;
+            Microsoft.Office.Interop.Excel._Worksheet ws;
+            this.Background =Brushes.Green;
             string cellName = this.DataContext.ToString();
             string fileName = "C:\\Temp\\" + cellName + ".xlsx";
             FileInfo fi = new FileInfo(@fileName);
             if (!fi.Exists)
             {
-                wb = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+                var wbs = app.Workbooks;
+                wb = wbs.Add(XlWBATemplate.xlWBATWorksheet);
                 ws = wb.Worksheets[1];
                 ws.Range["A1"].Value = cellName;
                 DateTime currentDate = DateTime.Now;
@@ -57,11 +60,16 @@ namespace Step.Views
                 wb.Close();
                 app.Quit();
                 app.DisplayAlerts = true;
+                Marshal.ReleaseComObject(ws);
+                Marshal.ReleaseComObject(wb);
+                Marshal.ReleaseComObject(wbs);
+                Marshal.ReleaseComObject(app);
             }
             else
             {
                 string myPath = (@fileName);
-                app.Workbooks.Open(myPath);
+                var wbs = app.Workbooks;
+                wbs.Open(myPath);
                 wb = app.ActiveWorkbook;
                 ws = wb.ActiveSheet;
                 DateTime currentDate = DateTime.Now;
@@ -78,17 +86,26 @@ namespace Step.Views
                 wb.Close();
                 app.Quit();
                 app.DisplayAlerts = true;
+                Marshal.ReleaseComObject(ws);
+                Marshal.ReleaseComObject(wb);
+                Marshal.ReleaseComObject(wbs);
+                Marshal.ReleaseComObject(app);
             }
         }
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
+            app = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook wb;
+            Microsoft.Office.Interop.Excel._Worksheet ws;
+            this.Background = null;
             string cellName = this.DataContext.ToString();
             string fileName = "C:\\Temp\\" + cellName + ".xlsx";
             FileInfo fi = new FileInfo(@fileName);
             if (!fi.Exists)
             {
-                wb = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+                var wbs = app.Workbooks;
+                wb = wbs.Add(XlWBATemplate.xlWBATWorksheet);
                 ws = wb.Worksheets[1];
                 DateTime currentDate = DateTime.Now;
                 for (int i = 2; i <= 1000; i++)
@@ -104,11 +121,16 @@ namespace Step.Views
                 wb.Close();
                 app.Quit();
                 app.DisplayAlerts = true;
+                Marshal.ReleaseComObject(ws);
+                Marshal.ReleaseComObject(wb);
+                Marshal.ReleaseComObject(wbs);
+                Marshal.ReleaseComObject(app);
             }
             else
             {
                 string myPath = (fileName);
-                app.Workbooks.Open(myPath);
+                var wbs = app.Workbooks;
+                wbs.Open(myPath);
                 wb = app.ActiveWorkbook;
                 ws = wb.ActiveSheet;
                 DateTime currentDate = DateTime.Now;
@@ -125,29 +147,27 @@ namespace Step.Views
                 wb.Close();
                 app.Quit();
                 app.DisplayAlerts = true;
+                Marshal.ReleaseComObject(ws);
+                Marshal.ReleaseComObject(wb);
+                Marshal.ReleaseComObject(wbs);
+                Marshal.ReleaseComObject(app);
             }
 
         }
 
         private void Table_Click(object sender, RoutedEventArgs e)
         {
+            app = new Microsoft.Office.Interop.Excel.Application();
             string cellName = this.DataContext.ToString();
             string fileName = "C:\\Temp\\" + cellName + ".xlsx";
             FileInfo fi = new FileInfo(fileName);
+            string myPath = (@fileName);
+            
             if (fi.Exists)
             {
-                if (app.Visible == true)
-                {
-                    app.Workbooks.Close();
-                    app.Quit();
-                }
-                else
-                {
-                    string myPath = (@fileName);
-                    app.Workbooks.Open(myPath);
-                    app.Visible = true;
-                }
-
+                var wbs = app.Workbooks;
+                wbs.Open(myPath);
+                app.Visible = true;
             }
         }
 
