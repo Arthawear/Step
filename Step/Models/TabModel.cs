@@ -8,7 +8,7 @@ namespace Step.Models
 {
     public class TabModel : BaseModel
     {
-        internal static string[] tabNames = new string[18] { "Barni", "Szabi", "Laci", "Csaba", "P. Eszter", "D-K. Eszter", "Lori", "Konya", "Donat", "Betty", "Isti", "Cili", "Boti", "Tita", "Balint", "Csabi", "Timi", "Hajna" };
+        internal static string[] tabNames = new string[18] { "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name", "Name" };
         
         public string[] TabNames
         {

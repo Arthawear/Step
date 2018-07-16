@@ -1,4 +1,5 @@
 ﻿using Step.Models;
+using Step.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,25 @@ namespace Step.Views
     /// </summary>
     public partial class Screen : UserControl
     {
+        string savedSettingsFilePath = "SavedNames.json";
         private TabModel tabModel;
         public Screen()
         {
             InitializeComponent();
             tabModel = new TabModel();
+            try
+            {
+                var fileStorage = new FileStorage<object[]>();
+                var settingsSaved = fileStorage.GetModel(savedSettingsFilePath);
+                for (int i = 0; i < tabModel.TabNames.Length; i++)
+                {
+                    tabModel.TabNames[i] = (string)settingsSaved[i];
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
             this.DataContext = tabModel;
         }
     }

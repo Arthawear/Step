@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
 using Step.Models;
+using Step.Storage;
 
 namespace Step.Views
 {
@@ -185,8 +186,29 @@ namespace Step.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string buttonName = this.Name;
+            int buttonNumber = Convert.ToInt32(buttonName.Substring(3));
             string newName = nameTxtBox.Text;
             this.DataContext = newName;
+            string savedSettingsFilePath = "SavedNames.json";
+            try
+            {
+                var fileStorage = new FileStorage<object[]>();
+                object[] settingsSaved = fileStorage.GetModel(savedSettingsFilePath);
+                settingsSaved[buttonNumber - 1] = newName;
+                fileStorage.SetModel(savedSettingsFilePath, settingsSaved);
+            }
+            catch (Exception)
+            {
+                var fileStorage = new FileStorage<object[]>();
+                object[] settingsSaved = new object[18];
+                for (int i = 0; i < settingsSaved.Length; i++)
+                {
+                    settingsSaved[i] = "Name";
+                }
+                settingsSaved[buttonNumber - 1] = newName;
+                fileStorage.SetModel(savedSettingsFilePath, settingsSaved);
+            }
             popLink.IsOpen = false;
         }
 
