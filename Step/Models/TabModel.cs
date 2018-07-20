@@ -22,6 +22,7 @@ namespace Step.Models
                 {
                     tabNames = value;
                     this.OnPropertyChanged("TabNames");
+
                 }
             }
         }
