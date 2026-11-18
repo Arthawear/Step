@@ -41,31 +41,63 @@ namespace Step.Views
             string cellName = this.DataContext.ToString();
             string fileName = "C:\\Temp\\" + cellName + ".xlsx";
             FileInfo fi = new FileInfo(@fileName);
+            string fileItem= "C:\\Temp\\Item.xlsx";
+            FileInfo fiItem = new FileInfo(fileItem);
             if (!fi.Exists)
             {
-                var wbs = app.Workbooks;
-                wb = wbs.Add(XlWBATemplate.xlWBATWorksheet);
-                ws = wb.Worksheets[1];
-                ws.Range["A1"].Value = cellName;
-                DateTime currentDate = DateTime.Now;
-                for (int i = 2; i <= 1000; i++)
+                if (fiItem.Exists)
                 {
-                    if (ws.Range["A" + i].Value == null)
+                    string myPath = (@fileItem);
+                    var wbs = app.Workbooks;
+                    wbs.Open(myPath);
+                    wb = app.ActiveWorkbook;
+                    ws = wb.ActiveSheet;
+                    DateTime currentDate = DateTime.Now;
+                    for (int i = 2; i <= 1000; i++)
                     {
-                        ws.Range["A" + i].Value = currentDate;
-                        break;
+                        if (ws.Range["A" + i].Value == null)
+                        {
+                            ws.Range["A" + i].Value = currentDate;
+                            break;
+                        }
                     }
+                    app.DisplayAlerts = false;
+                    wb.SaveAs(fileName);
+                    wb.Close();
+                    app.Quit();
+                    app.DisplayAlerts = true;
+                    Marshal.ReleaseComObject(ws);
+                    Marshal.ReleaseComObject(wb);
+                    Marshal.ReleaseComObject(wbs);
+                    Marshal.ReleaseComObject(app);
                 }
-                app.DisplayAlerts = false;
-                wb.SaveAs(fileName);
-                wb.Close();
-                app.Quit();
-                app.DisplayAlerts = true;
-                Marshal.ReleaseComObject(ws);
-                Marshal.ReleaseComObject(wb);
-                Marshal.ReleaseComObject(wbs);
-                Marshal.ReleaseComObject(app);
+                else
+                {
+                    var wbs = app.Workbooks;
+                    wb = wbs.Add(XlWBATemplate.xlWBATWorksheet);
+                    ws = wb.Worksheets[1];
+                    ws.Range["A1"].Value = cellName;
+                    DateTime currentDate = DateTime.Now;
+                    for (int i = 2; i <= 1000; i++)
+                    {
+                        if (ws.Range["A" + i].Value == null)
+                        {
+                            ws.Range["A" + i].Value = currentDate;
+                            break;
+                        }
+                    }
+                    app.DisplayAlerts = false;
+                    wb.SaveAs(fileName);
+                    wb.Close();
+                    app.Quit();
+                    app.DisplayAlerts = true;
+                    Marshal.ReleaseComObject(ws);
+                    Marshal.ReleaseComObject(wb);
+                    Marshal.ReleaseComObject(wbs);
+                    Marshal.ReleaseComObject(app);
+                }
             }
+            
             else
             {
                 string myPath = (@fileName);
@@ -201,7 +233,7 @@ namespace Step.Views
             catch (Exception)
             {
                 var fileStorage = new FileStorage<object[]>();
-                object[] settingsSaved = new object[18];
+                object[] settingsSaved = new object[36];
                 for (int i = 0; i < settingsSaved.Length; i++)
                 {
                     settingsSaved[i] = "Name";

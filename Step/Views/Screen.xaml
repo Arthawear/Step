@@ -18,6 +18,10 @@
             <RowDefinition Name="row1"></RowDefinition>
             <RowDefinition Name="row2"></RowDefinition>
             <RowDefinition Name="row3"></RowDefinition>
+            <RowDefinition Name="row4"></RowDefinition>
+            <RowDefinition Name="row5"></RowDefinition>
+            <RowDefinition Name="row6"></RowDefinition>
+            <RowDefinition Name="row7"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Name="col1"></ColumnDefinition>
@@ -45,5 +49,24 @@
         <local:Tab x:Name="tab16" Grid.Row="2" Grid.Column="3" DataContext="{Binding Path=TabNames[15]}"></local:Tab>
         <local:Tab x:Name="tab17" Grid.Row="2" Grid.Column="4" DataContext="{Binding Path=TabNames[16]}"></local:Tab>
         <local:Tab x:Name="tab18" Grid.Row="2" Grid.Column="5" DataContext="{Binding Path=TabNames[17]}"></local:Tab>
+        <local:Tab x:Name="tab19" Grid.Row="3" Grid.Column="0" DataContext="{Binding Path=TabNames[18]}"></local:Tab>
+        <local:Tab x:Name="tab20" Grid.Row="3" Grid.Column="1" DataContext="{Binding Path=TabNames[19]}"></local:Tab>
+        <local:Tab x:Name="tab21" Grid.Row="3" Grid.Column="2" DataContext="{Binding Path=TabNames[20]}"></local:Tab>
+        <local:Tab x:Name="tab22" Grid.Row="3" Grid.Column="3" DataContext="{Binding Path=TabNames[21]}"></local:Tab>
+        <local:Tab x:Name="tab23" Grid.Row="3" Grid.Column="4" DataContext="{Binding Path=TabNames[22]}"></local:Tab>
+        <local:Tab x:Name="tab24" Grid.Row="3" Grid.Column="5" DataContext="{Binding Path=TabNames[23]}"></local:Tab>
+        <local:Tab x:Name="tab25" Grid.Row="4" Grid.Column="0" Background="Azure" DataContext="{Binding Path=TabNames[24]}"></local:Tab>
+        <local:Tab x:Name="tab26" Grid.Row="4" Grid.Column="1" Background="Azure" DataContext="{Binding Path=TabNames[25]}"></local:Tab>
+        <local:Tab x:Name="tab27" Grid.Row="4" Grid.Column="2" Background="Azure" DataContext="{Binding Path=TabNames[26]}"></local:Tab>
+        <local:Tab x:Name="tab28" Grid.Row="4" Grid.Column="3" Background="Azure" DataContext="{Binding Path=TabNames[27]}"></local:Tab>
+        <local:Tab x:Name="tab29" Grid.Row="4" Grid.Column="4" Background="Azure" DataContext="{Binding Path=TabNames[28]}"></local:Tab>
+        <local:Tab x:Name="tab30" Grid.Row="4" Grid.Column="5" Background="Azure" DataContext="{Binding Path=TabNames[29]}"></local:Tab>
+        <local:Tab x:Name="tab31" Grid.Row="5" Grid.Column="0" Background="Azure" DataContext="{Binding Path=TabNames[30]}"></local:Tab>
+        <local:Tab x:Name="tab32" Grid.Row="5" Grid.Column="1" Background="Azure" DataContext="{Binding Path=TabNames[31]}"></local:Tab>
+        <local:Tab x:Name="tab33" Grid.Row="5" Grid.Column="2" Background="Azure" DataContext="{Binding Path=TabNames[32]}"></local:Tab>
+        <local:Tab x:Name="tab34" Grid.Row="5" Grid.Column="3" Background="Azure" DataContext="{Binding Path=TabNames[33]}"></local:Tab>
+        <local:Tab x:Name="tab35" Grid.Row="5" Grid.Column="4" Background="Azure" DataContext="{Binding Path=TabNames[34]}"></local:Tab>
+        <local:Tab x:Name="tab36" Grid.Row="5" Grid.Column="5" Background="Azure" DataContext="{Binding Path=TabNames[35]}"></local:Tab>
+        <local:Line x:Name="line1" Grid.Row="6" Grid.ColumnSpan="6" Background="Azure" DataContext="{Binding Path=TabNames[0]}"></local:Line>
     </Grid>
 </UserControl>

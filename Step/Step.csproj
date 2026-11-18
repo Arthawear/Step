@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,6 +66,9 @@
     <Compile Include="Views\Screen.xaml.cs">
       <DependentUpon>Screen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Line.xaml.cs">
+      <DependentUpon>Line.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tab.xaml.cs">
       <DependentUpon>Tab.xaml</DependentUpon>
     </Compile>
@@ -83,6 +87,10 @@
     <Page Include="Views\Screen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Line.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Tab.xaml">
       <SubType>Designer</SubType>

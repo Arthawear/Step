@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Step"
         xmlns:local1="clr-namespace:Step.Views"
         mc:Ignorable="d"
-         Name="mainWindow" Title="Step" Height="450" Width="1500">
+         Name="mainWindow" Title="Step" Height="700" Width="1500">
     <Grid>
         <local1:Screen  x:Name="screen1"></local1:Screen>
     </Grid>
