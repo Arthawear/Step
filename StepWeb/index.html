@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>Step — Activity tracker</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Step home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>step<span class="brand-dot">.</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="local-badge"><span class="status-dot"></span> Saved on this device</span>
+      </div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">YOUR DAY, IN FOCUS</p>
+        <h1 id="page-title">Make every step count.</h1>
+        <p class="intro-copy">Track the time you spend on the things that matter.</p>
+      </div>
+      <div class="date-card">
+        <span class="date-icon" aria-hidden="true">◷</span>
+        <span id="today-label">Today</span>
+      </div>
+    </section>
+
+    <section class="overview" aria-label="Tracking summary">
+      <div class="overview-card">
+        <span class="overview-icon purple" aria-hidden="true">◷</span>
+        <div><span class="overview-label">ACTIVE NOW</span><strong id="active-count">0</strong></div>
+      </div>
+      <div class="overview-card">
+        <span class="overview-icon mint" aria-hidden="true">✓</span>
+        <div><span class="overview-label">SESSIONS TODAY</span><strong id="session-count">0</strong></div>
+      </div>
+      <div class="overview-card overview-hint">
+        <span class="hint-mark" aria-hidden="true">✦</span>
+        <p>Small steps add up.<br><strong>Start where you are.</strong></p>
+      </div>
+    </section>
+
+    <section class="activities" aria-labelledby="activities-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="activities-title">Your activities</h2>
+          <p>Start a timer, or review your recorded sessions.</p>
+        </div>
+        <div class="toolbar">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="Find an activity" aria-label="Find an activity">
+          </label>
+          <button class="button button-secondary" id="export-button" type="button"><span aria-hidden="true">↓</span> Export CSV</button>
+        </div>
+      </div>
+      <div id="activity-grid" class="activity-grid" aria-live="polite"></div>
+      <p id="empty-message" class="empty-message" hidden>No activities match that search.</p>
+    </section>
+
+    <footer class="footer">
+      <span>Step · A little more intentional, every day.</span>
+      <button id="reset-button" class="text-button" type="button">Reset all data</button>
+    </footer>
+  </main>
+
+  <dialog id="edit-dialog" class="dialog">
+    <form id="edit-form" method="dialog">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">PERSONALIZE</p><h2>Rename activity</h2></div>
+        <button class="icon-button" type="button" data-close="edit-dialog" aria-label="Close">×</button>
+      </div>
+      <label class="field-label" for="activity-name">Activity name</label>
+      <input id="activity-name" class="text-field" maxlength="48" required autocomplete="off">
+      <div class="dialog-actions">
+        <button class="button button-secondary" type="button" data-close="edit-dialog">Cancel</button>
+        <button class="button button-primary" type="submit">Save name</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="history-dialog" class="dialog history-dialog">
+    <div class="dialog-heading">
+      <div><p class="eyebrow">ACTIVITY LOG</p><h2 id="history-title">Sessions</h2></div>
+      <button class="icon-button" type="button" data-close="history-dialog" aria-label="Close">×</button>
+    </div>
+    <div id="history-content" class="history-content"></div>
+    <div class="dialog-actions">
+      <button id="export-activity-button" class="button button-secondary" type="button">Export this activity</button>
+      <button class="button button-primary" type="button" data-close="history-dialog">Done</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
