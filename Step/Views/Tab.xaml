@@ -100,8 +100,8 @@
                 </Popup>
                 <TextBlock Name="TabName" Grid.Row="0" Grid.Column="1" Text="{Binding}" FontSize="25" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                 <Button Name="table" Grid.Row="0" Grid.Column="5" Style="{StaticResource ButtonStyle}" Content="  ꙱  " FontSize="10" Background="Transparent" BorderThickness="0" Foreground="{Binding HeaderForegroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Table_Click" ></Button>
-                <Button Name="button1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource ButtonStyle}" Content="OUT  " FontSize="25" Background="Transparent" BorderThickness="0" Foreground="{Binding HeaderForegroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button1_Click"></Button>
-                <Button Name="button2" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource ButtonStyle}" Content="  IN  " FontSize="25" Background="Transparent" BorderThickness="0" Foreground="{Binding HeaderForegroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button2_Click"></Button>
+                <Button Name="button1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource ButtonStyle}" Content="START  " FontSize="25" Background="Transparent" BorderThickness="0" Foreground="{Binding HeaderForegroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button1_Click"></Button>
+                <Button Name="button2" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource ButtonStyle}" Content="  END  " FontSize="25" Background="Transparent" BorderThickness="0" Foreground="{Binding HeaderForegroundColor}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button2_Click"></Button>
             </Grid>
         </Viewbox>
     </Grid>

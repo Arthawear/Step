@@ -1,0 +1,50 @@
+{
+  "name": "step-activity-tracker",
+  "version": "1.0.0",
+  "description": "A simple desktop activity timer.",
+  "main": "main.cjs",
+  "author": "Step",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^41.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.step.activitytracker",
+    "productName": "Step",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "favicon.svg",
+      "main.cjs",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../Step/Images/StepIcon.ico",
+        "to": "StepIcon.ico"
+      }
+    ],
+    "win": {
+      "icon": "../Step/Images/StepIcon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
